@@ -41,9 +41,9 @@ class _TabNavigatorState extends State<TabNavigator> {
         fixedColor: _activeColor,
         items: [
           _bottomItem("首页", Icons.home, 0),
-          _bottomItem("首页", Icons.search, 1),
-          _bottomItem("首页", Icons.camera_alt, 2),
-          _bottomItem("首页", Icons.account_circle, 3)
+          _bottomItem("搜索", Icons.search, 1),
+          _bottomItem("旅拍", Icons.camera_alt, 2),
+          _bottomItem("我的", Icons.account_circle, 3)
         ],
       ),
     );

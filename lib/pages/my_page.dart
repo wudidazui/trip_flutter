@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trip_flutter/widget/hi_webview.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({super.key});
@@ -11,13 +12,15 @@ class _MyPageState extends State<MyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text("我的"),
-      ),
-      body: Column(
-        children: const [Text("我的")],
-      ),
-    );
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: Text("我的"),
+        ),
+        body: HiWebView(
+          url: 'https://www.imooc.com/t/4951150',
+          hideAppBar: true,
+          // backForbid: true,
+          // statusBarColor: '0176ac',
+        ));
   }
 }
