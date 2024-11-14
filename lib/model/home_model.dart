@@ -1,10 +1,10 @@
 class HomeModel {
   Config? config;
-  List<SearchPlaceHolderList>? searchPlaceHolderList;
-  List<BannerList>? bannerList;
-  List<LocalNavList>? localNavList;
+  List<SearchPlaceHolderItem>? searchPlaceHolderList;
+  List<BannerItem>? bannerList;
+  List<LocalNavItem>? localNavList;
   GridNav? gridNav;
-  List<SubNavList>? subNavList;
+  List<SubNavItem>? subNavList;
   SalesBox? salesBox;
 
   HomeModel(
@@ -20,29 +20,29 @@ class HomeModel {
     config =
         json['config'] != null ? new Config.fromJson(json['config']) : null;
     if (json['searchPlaceHolderList'] != null) {
-      searchPlaceHolderList = <SearchPlaceHolderList>[];
+      searchPlaceHolderList = <SearchPlaceHolderItem>[];
       json['searchPlaceHolderList'].forEach((v) {
-        searchPlaceHolderList?.add(new SearchPlaceHolderList.fromJson(v));
+        searchPlaceHolderList?.add(new SearchPlaceHolderItem.fromJson(v));
       });
     }
     if (json['bannerList'] != null) {
-      bannerList = <BannerList>[];
+      bannerList = <BannerItem>[];
       json['bannerList'].forEach((v) {
-        bannerList?.add(new BannerList.fromJson(v));
+        bannerList?.add(new BannerItem.fromJson(v));
       });
     }
     if (json['localNavList'] != null) {
-      localNavList = <LocalNavList>[];
+      localNavList = <LocalNavItem>[];
       json['localNavList'].forEach((v) {
-        localNavList?.add(new LocalNavList.fromJson(v));
+        localNavList?.add(new LocalNavItem.fromJson(v));
       });
     }
     gridNav =
         json['gridNav'] != null ? new GridNav.fromJson(json['gridNav']) : null;
     if (json['subNavList'] != null) {
-      subNavList = <SubNavList>[];
+      subNavList = <SubNavItem>[];
       json['subNavList'].forEach((v) {
-        subNavList?.add(new SubNavList.fromJson(v));
+        subNavList?.add(new SubNavItem.fromJson(v));
       });
     }
     salesBox = json['salesBox'] != null
@@ -94,12 +94,12 @@ class Config {
   }
 }
 
-class SearchPlaceHolderList {
+class SearchPlaceHolderItem {
   String? text;
 
-  SearchPlaceHolderList({this.text});
+  SearchPlaceHolderItem({this.text});
 
-  SearchPlaceHolderList.fromJson(Map<String, dynamic> json) {
+  SearchPlaceHolderItem.fromJson(Map<String, dynamic> json) {
     text = json['text'];
   }
 
@@ -110,14 +110,14 @@ class SearchPlaceHolderList {
   }
 }
 
-class BannerList {
+class BannerItem {
   String? icon;
   String? sIcon;
   String? url;
 
-  BannerList({this.icon, this.sIcon, this.url});
+  BannerItem({this.icon, this.sIcon, this.url});
 
-  BannerList.fromJson(Map<String, dynamic> json) {
+  BannerItem.fromJson(Map<String, dynamic> json) {
     icon = json['icon'];
     sIcon = json['sIcon'];
     url = json['url'];
@@ -132,17 +132,17 @@ class BannerList {
   }
 }
 
-class LocalNavList {
+class LocalNavItem {
   String? icon;
   String? title;
   String? url;
   String? statusBarColor;
   bool? hideAppBar;
 
-  LocalNavList(
+  LocalNavItem(
       {this.icon, this.title, this.url, this.statusBarColor, this.hideAppBar});
 
-  LocalNavList.fromJson(Map<String, dynamic> json) {
+  LocalNavItem.fromJson(Map<String, dynamic> json) {
     icon = json['icon'];
     title = json['title'];
     url = json['url'];
@@ -192,11 +192,11 @@ class GridNav {
 class Hotel {
   String? startColor;
   String? endColor;
-  LocalNavList? mainItem;
-  Item2? item1;
-  Item2? item2;
-  Item2? item3;
-  Item2? item4;
+  LocalNavItem? mainItem;
+  Item? item1;
+  Item? item2;
+  Item? item3;
+  Item? item4;
 
   Hotel(
       {this.startColor,
@@ -211,12 +211,12 @@ class Hotel {
     startColor = json['startColor'];
     endColor = json['endColor'];
     mainItem = json['mainItem'] != null
-        ? new LocalNavList.fromJson(json['mainItem'])
+        ? new LocalNavItem.fromJson(json['mainItem'])
         : null;
-    item1 = json['item1'] != null ? new Item2.fromJson(json['item1']) : null;
-    item2 = json['item2'] != null ? new Item2.fromJson(json['item2']) : null;
-    item3 = json['item3'] != null ? new Item2.fromJson(json['item3']) : null;
-    item4 = json['item4'] != null ? new Item2.fromJson(json['item4']) : null;
+    item1 = json['item1'] != null ? new Item.fromJson(json['item1']) : null;
+    item2 = json['item2'] != null ? new Item.fromJson(json['item2']) : null;
+    item3 = json['item3'] != null ? new Item.fromJson(json['item3']) : null;
+    item4 = json['item4'] != null ? new Item.fromJson(json['item4']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -267,14 +267,14 @@ class MainItem {
   }
 }
 
-class Item1 {
+class Item {
   String? title;
   String? url;
   String? statusBarColor;
 
-  Item1({this.title, this.url, this.statusBarColor});
+  Item({this.title, this.url, this.statusBarColor});
 
-  Item1.fromJson(Map<String, dynamic> json) {
+  Item.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     url = json['url'];
     statusBarColor = json['statusBarColor'];
@@ -289,56 +289,15 @@ class Item1 {
   }
 }
 
-class Item2 {
-  String? title;
-  String? url;
-
-  Item2({this.title, this.url});
-
-  Item2.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
-    url = json['url'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['url'] = this.url;
-    return data;
-  }
-}
-
-class Item3 {
-  String? title;
-  String? url;
-  bool? hideAppBar;
-
-  Item3({this.title, this.url, this.hideAppBar});
-
-  Item3.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
-    url = json['url'];
-    hideAppBar = json['hideAppBar'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['url'] = this.url;
-    data['hideAppBar'] = this.hideAppBar;
-    return data;
-  }
-}
-
-class SubNavList {
+class SubNavItem {
   String? icon;
   String? title;
   String? url;
   bool? hideAppBar;
 
-  SubNavList({this.icon, this.title, this.url, this.hideAppBar});
+  SubNavItem({this.icon, this.title, this.url, this.hideAppBar});
 
-  SubNavList.fromJson(Map<String, dynamic> json) {
+  SubNavItem.fromJson(Map<String, dynamic> json) {
     icon = json['icon'];
     title = json['title'];
     url = json['url'];
@@ -358,12 +317,12 @@ class SubNavList {
 class SalesBox {
   String? icon;
   String? moreUrl;
-  SubNavList? bigCard1;
-  SubNavList? bigCard2;
-  SubNavList? smallCard1;
-  SubNavList? smallCard2;
-  SubNavList? smallCard3;
-  SubNavList? smallCard4;
+  SubNavItem? bigCard1;
+  SubNavItem? bigCard2;
+  SubNavItem? smallCard1;
+  SubNavItem? smallCard2;
+  SubNavItem? smallCard3;
+  SubNavItem? smallCard4;
 
   SalesBox(
       {this.icon,
@@ -379,22 +338,22 @@ class SalesBox {
     icon = json['icon'];
     moreUrl = json['moreUrl'];
     bigCard1 = json['bigCard1'] != null
-        ? new SubNavList.fromJson(json['bigCard1'])
+        ? new SubNavItem.fromJson(json['bigCard1'])
         : null;
     bigCard2 = json['bigCard2'] != null
-        ? new SubNavList.fromJson(json['bigCard2'])
+        ? new SubNavItem.fromJson(json['bigCard2'])
         : null;
     smallCard1 = json['smallCard1'] != null
-        ? new SubNavList.fromJson(json['smallCard1'])
+        ? new SubNavItem.fromJson(json['smallCard1'])
         : null;
     smallCard2 = json['smallCard2'] != null
-        ? new SubNavList.fromJson(json['smallCard2'])
+        ? new SubNavItem.fromJson(json['smallCard2'])
         : null;
     smallCard3 = json['smallCard3'] != null
-        ? new SubNavList.fromJson(json['smallCard3'])
+        ? new SubNavItem.fromJson(json['smallCard3'])
         : null;
     smallCard4 = json['smallCard4'] != null
-        ? new SubNavList.fromJson(json['smallCard4'])
+        ? new SubNavItem.fromJson(json['smallCard4'])
         : null;
   }
 

@@ -4,7 +4,7 @@ import 'package:trip_flutter/model/home_model.dart';
 import 'package:trip_flutter/util/screen_adapter_helper.dart';
 
 class BannerWidget extends StatefulWidget {
-  final List<BannerList> bannerList;
+  final List<BannerItem> bannerList;
   const BannerWidget({super.key, required this.bannerList});
 
   @override
@@ -39,7 +39,7 @@ class _BannerWidgetState extends State<BannerWidget> {
     );
   }
 
-  Widget _tabImage(BannerList model, double width) {
+  Widget _tabImage(BannerItem model, double width) {
     return GestureDetector(
       onTap: () {
         //todo

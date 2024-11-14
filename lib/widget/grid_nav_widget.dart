@@ -7,8 +7,8 @@ class GridNavWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(7, 0, 7, 0),
+    return Container(
+      margin: EdgeInsets.fromLTRB(7, 0, 7, 0),
       child: PhysicalModel(
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(6),
@@ -53,7 +53,7 @@ class GridNavWidget extends StatelessWidget {
     );
   }
 
-  Widget _mainItem(BuildContext context, LocalNavList? model) {
+  Widget _mainItem(BuildContext context, LocalNavItem? model) {
     return _wrapGesture(
         context,
         Stack(
@@ -87,7 +87,7 @@ class GridNavWidget extends StatelessWidget {
     );
   }
 
-  Widget _doubleItem(BuildContext context, Item2? topItem, Item2? bottomItem) {
+  Widget _doubleItem(BuildContext context, Item? topItem, Item? bottomItem) {
     return Column(
       children: [
         Expanded(child: _item(context, topItem, true)),
@@ -96,7 +96,7 @@ class GridNavWidget extends StatelessWidget {
     );
   }
 
-  _item(BuildContext context, Item2? item, bool first) {
+  _item(BuildContext context, Item? item, bool first) {
     BorderSide borderSide = BorderSide(width: 0.8, color: Colors.white);
     return Container(
       decoration: BoxDecoration(

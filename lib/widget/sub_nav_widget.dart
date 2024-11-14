@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../model/home_model.dart';
 
 class SubNavWidget extends StatelessWidget {
-  List<SubNavList>? subNavList;
+  List<SubNavItem>? subNavList;
   SubNavWidget({super.key, this.subNavList});
 
   @override
@@ -45,7 +45,7 @@ class SubNavWidget extends StatelessWidget {
     );
   }
 
-  Widget _item(BuildContext context, SubNavList model) {
+  Widget _item(BuildContext context, SubNavItem model) {
     return Expanded(
         child: GestureDetector(
       onTap: () {

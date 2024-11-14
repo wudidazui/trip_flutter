@@ -22,12 +22,14 @@ class _HomePageState extends State<HomePage>
   static const appbarScrollOffset = 100;
 
   double appBarAlpha = 0;
-  List<BannerList> bannerList = [];
-  List<LocalNavList> localNavList = [];
-  List<SubNavList> subNavList = [];
+  bool _loading = true;
+
+  List<BannerItem> bannerList = [];
+  List<LocalNavItem> localNavList = [];
+  List<SubNavItem> subNavList = [];
   GridNav? gridNavModel;
   SalesBox? salesBoxModel;
-  bool _loading = true;
+
   get _appBar => Opacity(
         opacity: appBarAlpha,
         child: Container(
@@ -36,7 +38,7 @@ class _HomePageState extends State<HomePage>
           decoration: BoxDecoration(color: Colors.white),
           child: Center(
             child: Padding(
-              padding: EdgeInsets.only(top: 20),
+              padding: EdgeInsets.only(top: 10),
               child: Text("首页"),
             ),
           ),
@@ -86,6 +88,7 @@ class _HomePageState extends State<HomePage>
     super.build(context);
     return Scaffold(
       backgroundColor: Color(0xfff2f2f2),
+      //loading
       body: LoadingContainer(
           isLoading: _loading,
           child: Stack(

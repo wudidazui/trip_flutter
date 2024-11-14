@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../model/home_model.dart';
 
 class LocalNavWidget extends StatelessWidget {
-  final List<LocalNavList> localNavList;
+  final List<LocalNavItem> localNavList;
   const LocalNavWidget({super.key, required this.localNavList});
 
   @override
@@ -32,15 +32,22 @@ class LocalNavWidget extends StatelessWidget {
     );
   }
 
-  Widget _item(BuildContext context, LocalNavList model) {
+  Widget _item(BuildContext context, LocalNavItem model) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         //todo
       },
       child: Column(
         children: [
-          Image.network(model.icon!,width: 32,height: 32,),
-          Text(model.title!,style: const TextStyle(fontSize: 12),)
+          Image.network(
+            model.icon!,
+            width: 32,
+            height: 32,
+          ),
+          Text(
+            model.title!,
+            style: const TextStyle(fontSize: 12),
+          )
         ],
       ),
     );

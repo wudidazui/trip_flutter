@@ -21,7 +21,7 @@ class SalesBoxWidget extends StatelessWidget {
       _doubleItem(
           context, salesBox.smallCard1, salesBox.smallCard2, false, false),
       _doubleItem(
-          context, salesBox.smallCard3, salesBox.smallCard4, false, false)
+          context, salesBox.smallCard3, salesBox.smallCard4, false, true)
     ]);
     return Column(
       children: [
@@ -39,20 +39,20 @@ class SalesBoxWidget extends StatelessWidget {
     );
   }
 
-  Widget _doubleItem(BuildContext context, SubNavList? leftCard,
-      SubNavList? rightCard, bool big, bool last) {
+  Widget _doubleItem(BuildContext context, SubNavItem? leftCard,
+      SubNavItem? rightCard, bool big, bool last) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         _item(context, leftCard, big, true, last),
-        _item(context, leftCard, big, false, last)
+        _item(context, rightCard, big, false, last)
       ],
     );
   }
 
   //底部卡片 left为左侧卡片，big是否为大卡片，last是否为最后一张卡片
   _item(
-      BuildContext context, SubNavList? model, bool big, bool left, bool last) {
+      BuildContext context, SubNavItem? model, bool big, bool left, bool last) {
     BorderSide borderSide = BorderSide(width: 0.8, color: Color(0xfff2f2f2));
     double width = MediaQuery.of(context).size.width / 2 - 10;
     return GestureDetector(
@@ -78,7 +78,7 @@ class SalesBoxWidget extends StatelessWidget {
   _titleItem() {
     return Container(
       height: 44,
-      margin: EdgeInsets.only(left: 10),
+      padding: EdgeInsets.only(left: 10),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(width: 1, color: Color(0xfff2f2f2))),
       ),
@@ -99,7 +99,7 @@ class SalesBoxWidget extends StatelessWidget {
   _moreItem() {
     return Container(
       padding: EdgeInsets.fromLTRB(10, 1, 8, 1),
-      margin: EdgeInsets.only(right: 7),
+      margin: EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           gradient: LinearGradient(
