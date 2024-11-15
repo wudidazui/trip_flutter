@@ -53,7 +53,8 @@ class SalesBoxWidget extends StatelessWidget {
   //底部卡片 left为左侧卡片，big是否为大卡片，last是否为最后一张卡片
   _item(
       BuildContext context, SubNavItem? model, bool big, bool left, bool last) {
-    BorderSide borderSide = BorderSide(width: 0.8, color: Color(0xfff2f2f2));
+    BorderSide borderSide =
+        BorderSide(width: 0.8, color: Colors.grey.withOpacity(0.3));
     double width = MediaQuery.of(context).size.width / 2 - 10;
     return GestureDetector(
       onTap: () {

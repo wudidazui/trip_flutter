@@ -31,7 +31,19 @@ class _MyAppState extends State<MyApp> {
             body: Column(
               children: [
                 // 3
-                Expanded(child: WebViewWidget(controller: controller))
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft, // 渐变的开始位置
+                      end: Alignment.bottomRight, // 渐变的结束位置
+                      colors: [Colors.blue, Colors.green], // 渐变的颜色
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text('渐变背景！', style: TextStyle(color: Colors.white)),
+                  ),
+                )
               ],
             ),
             floatingActionButton: ElevatedButton(
