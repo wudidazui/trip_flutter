@@ -8,19 +8,23 @@ class MyPage extends StatefulWidget {
   State<MyPage> createState() => _MyPageState();
 }
 
-class _MyPageState extends State<MyPage> {
+class _MyPageState extends State<MyPage> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: Text("我的"),
-        ),
         body: HiWebView(
-          url: 'https://www.imooc.com/t/4951150',
-          hideAppBar: true,
-          // backForbid: true,
-          // statusBarColor: '0176ac',
-        ));
+      url:
+          'https://m.ctrip.com/webapp/myctrip/?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F1',
+      hideAppBar: true,
+      backForbid: true,
+      statusBarColor: "017ac",
+      // backForbid: true,
+      // statusBarColor: '0176ac',
+    ));
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

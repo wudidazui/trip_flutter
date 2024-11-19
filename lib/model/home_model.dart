@@ -193,10 +193,10 @@ class Hotel {
   String? startColor;
   String? endColor;
   LocalNavItem? mainItem;
-  Item? item1;
-  Item? item2;
-  Item? item3;
-  Item? item4;
+  LocalNavItem? item1;
+  LocalNavItem? item2;
+  LocalNavItem? item3;
+  LocalNavItem? item4;
 
   Hotel(
       {this.startColor,
@@ -213,10 +213,14 @@ class Hotel {
     mainItem = json['mainItem'] != null
         ? new LocalNavItem.fromJson(json['mainItem'])
         : null;
-    item1 = json['item1'] != null ? new Item.fromJson(json['item1']) : null;
-    item2 = json['item2'] != null ? new Item.fromJson(json['item2']) : null;
-    item3 = json['item3'] != null ? new Item.fromJson(json['item3']) : null;
-    item4 = json['item4'] != null ? new Item.fromJson(json['item4']) : null;
+    item1 =
+        json['item1'] != null ? new LocalNavItem.fromJson(json['item1']) : null;
+    item2 =
+        json['item2'] != null ? new LocalNavItem.fromJson(json['item2']) : null;
+    item3 =
+        json['item3'] != null ? new LocalNavItem.fromJson(json['item3']) : null;
+    item4 =
+        json['item4'] != null ? new LocalNavItem.fromJson(json['item4']) : null;
   }
 
   Map<String, dynamic> toJson() {
