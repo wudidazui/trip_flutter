@@ -42,11 +42,11 @@ class NavigatorUtil {
 
   static jumpH5(
       {BuildContext? context,
-      required String url,
+      String? url,
       String? title,
       bool? hideAppBar,
       String? statusBarColor}) {
-    var safeContext;
+    BuildContext? safeContext;
     if (url == null) {
       debugPrint('url is null jumpH5 failed.');
       return;
@@ -61,7 +61,7 @@ class NavigatorUtil {
     }
 
     Navigator.push(
-        safeContext,
+        safeContext!,
         MaterialPageRoute(
             builder: (context) => HiWebView(
                   url: url,

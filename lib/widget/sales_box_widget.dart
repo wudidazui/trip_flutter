@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trip_flutter/model/home_model.dart';
 
+import '../util/navigator_util.dart';
+
 class SalesBoxWidget extends StatelessWidget {
   final SalesBox salesBox;
   const SalesBoxWidget({super.key, required this.salesBox});
@@ -109,7 +111,7 @@ class SalesBoxWidget extends StatelessWidget {
               end: Alignment.centerRight)),
       child: GestureDetector(
         onTap: () {
-          //todo
+          NavigatorUtil.jumpH5(url: salesBox?.moreUrl, title: " ");
         },
         child: Text(
           "获取更多福利 >",

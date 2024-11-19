@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trip_flutter/model/home_model.dart';
 
+import '../util/navigator_util.dart';
+
 class GridNavWidget extends StatelessWidget {
   final GridNav? gridNavModel;
   const GridNavWidget({super.key, this.gridNavModel});
@@ -74,20 +76,27 @@ class GridNavWidget extends StatelessWidget {
               ),
             )
           ],
-        ));
+        ),
+        model);
   }
 
   //手式包裹器
-  Widget _wrapGesture(BuildContext context, Widget widget) {
+  Widget _wrapGesture(BuildContext context, Widget widget, LocalNavItem? item) {
     return GestureDetector(
       onTap: () {
         //todo
+        NavigatorUtil.jumpH5(
+            url: item?.url,
+            statusBarColor: item?.statusBarColor,
+            title: item?.title,
+            hideAppBar: true);
       },
       child: widget,
     );
   }
 
-  Widget _doubleItem(BuildContext context, Item? topItem, Item? bottomItem) {
+  Widget _doubleItem(
+      BuildContext context, LocalNavItem? topItem, LocalNavItem? bottomItem) {
     return Column(
       children: [
         Expanded(child: _item(context, topItem, true)),
@@ -96,7 +105,7 @@ class GridNavWidget extends StatelessWidget {
     );
   }
 
-  _item(BuildContext context, Item? item, bool first) {
+  _item(BuildContext context, LocalNavItem? item, bool first) {
     BorderSide borderSide = BorderSide(width: 0.8, color: Colors.white);
     return Container(
       decoration: BoxDecoration(
@@ -109,7 +118,8 @@ class GridNavWidget extends StatelessWidget {
               item!.title!,
               style: TextStyle(fontSize: 14, color: Colors.white),
             ),
-          )),
+          ),
+          item),
     );
   }
 }

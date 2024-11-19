@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trip_flutter/util/navigator_util.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+//h5容器
 class HiWebView extends StatefulWidget {
   final String? url;
   final String? statusBarColor;
@@ -45,6 +46,7 @@ class _HiWebViewState extends State<HiWebView> {
   Widget build(BuildContext context) {
     String statusBarColorStr = widget.statusBarColor ?? 'ffffff';
     Color backButtonColor;
+
     if (statusBarColorStr == 'ffffff') {
       backButtonColor = Colors.black;
     } else {
@@ -56,6 +58,7 @@ class _HiWebViewState extends State<HiWebView> {
         canPop: false,
         onPopInvoked: (bool didPop) async {
           if (await controller.canGoBack()) {
+            //返回H5的上一页
             controller.goBack();
           } else {
             if (context.mounted) NavigatorUtil.pop(context);
@@ -85,6 +88,7 @@ class _HiWebViewState extends State<HiWebView> {
           },
           onPageStarted: (String url) {},
           onPageFinished: (String url) {
+            //页面加载完成之后执行js
             _handleBackForbid();
           },
           onWebResourceError: (WebResourceError error) {},
@@ -101,7 +105,12 @@ class _HiWebViewState extends State<HiWebView> {
       ..loadRequest(Uri.parse(url!));
   }
 
-  void _handleBackForbid() {}
+  void _handleBackForbid() {
+    const jsStr = "var element = document.querySelector('.animationComponent.rn-view'); element.style.display = 'none';";
+    if(widget.backForbid ?? false){
+      controller.runJavaScript(jsStr);
+    }
+  }
 
   bool _isToMain(String url) {
     bool contain = false;
@@ -137,6 +146,9 @@ class _HiWebViewState extends State<HiWebView> {
 
   _backButton(Color backButtonColor) {
     return GestureDetector(
+      onTap: (){
+        NavigatorUtil.pop(context);
+      },
       child: Container(
         margin: EdgeInsets.only(left: 10),
         child: Icon(

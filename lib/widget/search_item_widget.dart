@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trip_flutter/model/search_model.dart';
+import 'package:trip_flutter/util/navigator_util.dart';
 
 const types = [
   'channelgroup',
@@ -90,6 +91,7 @@ class SearchItemWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         //todo h5
+        NavigatorUtil.jumpH5(url: searchItem.url, title: "详情");
       },
       child: _item,
     );
